@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #EEAECA;
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+
+        }
+
+        .table {
+            --bs-table-bg: transparent;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        td:has(input:checked)~td {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- header -->
+        <div class="row m-5 py-3 text-center">
+            <div class="col">
+                <h1>Not to do list</h1>
+            </div>
+        </div>
+        <!-- input -->
+        <div class="row py-4 px-2 mb-5 rounded-pill  shadow-lg">
+            <div class="col-6">
+                <div class="">
+                    <input type="text" class="form-control" id="task" placeholder="Add Task">
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="">
+                    <input type="number" class="form-control" id="hour" placeholder="Hour">
+                </div>
+            </div>
+
+            <div class="col-2">
+                <select class="form-select" aria-label="Default select example" id="type">
+                    <option value="good">Good</option>
+                    <option value="bad">Bad</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <button type="button" id="add-btn" class="btn btn-primary" onclick="addTask()">Add Task</button>
+            </div>
+            <div class="col-2">
+                <button type="button" id="update-btn" class="btn btn-primary hidden" onclick="updateTask()">Update
+                    Task</button>
+            </div>
+        </div>
+        <!-- list -->
+        <div class="row">
+            <div class="col-12 col-md-6 text-center">
+                <h2>Good List</h2>
+                <hr>
+                <table class="table table-striped">
+                    <tbody id="goodListTable">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-12 col-md-6 text-center">
+                <h2>Bad List</h2>
+                <hr>
+                <table class="table table-striped">
+                    <tbody id="badListTable">
+                    </tbody>
+                </table>
+
+                <div class="alert alert-danger" role="alert">
+                    You wasted <span id="badHours">0</span> hr
+                </div>
+            </div>
+
+        </div>
+        <!-- total hour -->
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary" role="alert">
+                    Total Hours: <span id="totalHours">0</span> hr
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+</html>>

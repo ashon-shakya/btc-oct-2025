@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <style>
+        @import "tailwindcss";
+    </style>
+
+</head>
+
+<body class="bg-white dark:bg-slate-800 dark">
+
+    <!-- wrapper -->
+    <div class="flex h-screen w-screen flex-col content-center px-32">
+        <!-- header -->
+        <div class=" w-full p-24 flex content-center justify-center ">
+            <h1 class="text-4xl">Not to do list</h1>
+        </div>
+        <!-- input -->
+        <div class="flex flex-row justify-between p-8 bg-blue-600 rounded-xl">
+            <input type="text" class="bg-white rounded-xl h-12 p-2" id="task" placeholder="Add Task">
+
+
+            <input type="number" class="bg-white rounded-xl h-12 p-2" id="hour" placeholder="Hour">
+
+
+            <select class="bg-white rounded-xl h-12 p-2" aria-label="Default select example" id="type">
+
+                <option value="good">Good</option>
+                <option value="bad">Bad</option>
+            </select>
+
+            <button type="button" class="bg-blue-200 rounded-xl h-12 p-2 hover:bg-blue-800 hover:text-white"
+                onclick="addTask()">Add
+                Task</button>
+        </div>
+        <!-- list -->
+        <div class="flex flex-col md:flex-row justify-center gap-10">
+            <div class="w-full">
+                <h2>Good List</h2>
+                <hr>
+                <table class="table table-striped">
+
+                    <tbody id="goodListTable">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="w-full">
+                <h2>Bad List</h2>
+                <hr>
+                <table class="table table-striped">
+
+                    <tbody id="badListTable">
+
+                    </tbody>
+                </table>
+
+                <div class="bg-red-400 rounded-lg p-5" role="alert">
+                    You wasted <span id="badHours">0</span> hr
+                </div>
+            </div>
+
+        </div>
+        <!-- total hour -->
+        <div class="bg-sky-300 rounded-lg p-5 mt-4">
+            <div class="alert alert-primary" role="alert">
+                Total Hours: <span id="totalHours">0</span> hr
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+</html>

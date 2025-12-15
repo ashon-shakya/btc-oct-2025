@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:3000
+###
+GET {{baseUrl}}/
+
+
+###
+## CRETE TASK
+POST {{baseUrl}}/api/v1/tasks
+Content-Type: application/json
+
+{
+    "id" : 100,
+    "task" : "task 1",
+    "hour" : 20,
+    "type" : "good"
+    }
+
+
+### READ TASK
+GET {{baseUrl}}/api/v1/tasks
