@@ -1,1 +1,4 @@
-[{"id":100,"task":"task 1","hour":20,"type":"good"},{"id":100,"task":"task 1","hour":20,"type":"good"},{"id":100,"task":"task 1","hour":20,"type":"good"},{"id":100,"task":"task 1","hour":20,"type":"good"},{"id":100,"task":"task 1","hour":20,"type":"good"},{"id":100,"task":"task 1","hour":20,"type":"good"}]
+[
+  { "id": "HGpG3P", "task": "PATCH TASK 2", "hour": 5, "type": "good" },
+  { "id": "R3NtaO", "task": "test api", "hour": 10, "type": "bad" }
+]

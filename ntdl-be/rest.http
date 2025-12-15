@@ -18,3 +18,13 @@ Content-Type: application/json
 
 ### READ TASK
 GET {{baseUrl}}/api/v1/tasks
+
+### Update task
+PATCH  {{baseUrl}}/api/v1/tasks/HGpG3P
+Content-Type: application/json
+
+{
+    "task":  "PATCH TASK 2",
+    "hour": 5,
+    "type": "good"
+}
