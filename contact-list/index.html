@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body class="flex m-0 justify-center min-h-[100vh] box-border p-4">
     <!-- card wrapper -->
     <!-- <div
         class="card bg-green-950  rounded-[40px] w-[250px] h-[450px] border-[8px] border-green-950 overflow-hidden flex flex-col gap-4">
@@ -49,49 +49,66 @@
             </div>
         </div>
     </div> -->
+    <div class="mainwrapper box-border flex flex-col items-center bg-gray-200 p-10  rounded-4xl w-full h-full">
 
-    <div class="wrapper flex flex-wrap gap-10 justify-center w-[100vw]">
-        <!-- card wrapper -->
-        <div
-            class="card bg-green-950  rounded-[40px] w-[250px] h-[450px] border-[8px] border-green-950 overflow-hidden flex flex-col gap-4 relative justify-end">
-            <div class="card-image bg-slate-200 absolute h-full">
-                <img src="https://img.freepik.com/free-photo/front-view-business-woman-suit_23-2148603018.jpg?semt=ais_hybrid&w=740&q=80"
-                    class="h-full w-full object-cover ab" alt="" srcset="">
-            </div>
+        <h1 class="text-3xl font-bold my-4 text-gray-700">
+            Contact List
+        </h1>
 
+        <hr class="w-full mb-4 border-gray-300 border-1">
+        <div class="wrapper flex flex-wrap gap-10 justify-center w-full" id="contact-list">
+            <!-- card wrapper -->
             <div
-                class="card-details flex flex-col gap-2 text-gray-300 p-2 z-2 bg-gradient-to-b from-transparent  to-black h-[180px]">
-                <div class="card-title text-2xl text-white">
-                    Miss Noemie Harcourt
+                class="card bg-green-950  rounded-[40px] w-[250px] h-[450px] border-[8px] border-green-950 overflow-hidden flex flex-col gap-4 relative justify-end">
+                <div class="card-image bg-slate-200 absolute h-full">
+                    <img src="https://img.freepik.com/free-photo/front-view-business-woman-suit_23-2148603018.jpg?semt=ais_hybrid&w=740&q=80"
+                        class="h-full w-full object-cover ab" alt="" srcset="">
                 </div>
-                <div class="card-desc font-light">
-                    Waterloo, NSW 2000
-                </div>
-                <div class="card-footer font-light flex justify-between items-center">
-                    <div class="card-icons flex gap-2 text-xs text-gray-400">
-                        <div class="card-icon">
-                            <i class="fa-solid fa-user"></i>
-                            10
-                        </div>
-                        <div class="card-icon">
-                            <i class="fa-solid fa-mobile-screen"></i>
-                            X56 P23-6274
 
-                        </div>
+                <div
+                    class="card-details flex flex-col gap-2 text-gray-300 p-2 z-2 bg-gradient-to-b from-transparent  to-black min-h-[100px] transition-all delay-150 duration-300 ease-in-out">
+                    <div class="card-title text-2xl text-white">
+                        Miss Noemie Harcourt
                     </div>
+                    <div class="card-desc font-light">
+                        Waterloo, NSW 2000
+                    </div>
+                    <div
+                        class="card-footer font-light flex flex-col justify-start items-center pb-4 h-[20px] overflow-hidden hover:h-[100px] cursor-pointer transition-all duration-300 ease-in-out ">
+                        <div class="card-follow-btn w-full  flex justify-center animate-bounce">
+                            <i class="fa-solid fa-arrow-down-long"></i>
+                        </div>
+                        <div class="card-icons flex flex-col gap-2 text-xs text-gray-300 w-full">
+                            <div class="card-icon">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                X56 P23-6274
 
-                    <div class="card-follow-btn">
-                        <button
-                            class="bg-green-700 rounded-3xl text-white h-[40px] w-[80px] hover:bg-green-800 cursor-pointer">
-                            More
-                        </button>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fa-solid fa-at"></i>
+                                janedoe@gmail.com
+
+                            </div>
+
+                            <div class="card-icon">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                1952-12-20
+
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
 
 </body>
+
+<script src="script.js"></script>
 
 </html>
