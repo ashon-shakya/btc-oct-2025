@@ -9,18 +9,20 @@ POST {{baseUrl}}/api/v1/tasks
 Content-Type: application/json
 
 {
-    "id" : 100,
-    "task" : "task 1",
+
+    "task" : "database Task",
     "hour" : 20,
     "type" : "good"
     }
 
 
 ### READ TASK
-GET {{baseUrl}}/api/v1/tasks
+GET {{baseUrl}}/api/v1/tasks?type=good
+###
+GET {{baseUrl}}/api/v1/tasks/693f83534ab37eb2ff18cbc6
 
 ### Update task
-PATCH  {{baseUrl}}/api/v1/tasks/HGpG3P
+PATCH  {{baseUrl}}/api/v1/tasks/693f83534ab37eb2ff18cbc6
 Content-Type: application/json
 
 {

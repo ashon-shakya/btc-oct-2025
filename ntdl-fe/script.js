@@ -6,12 +6,6 @@ let taskList = [];
 // to edit
 let selectedTask = {};
 
-// add button event lister
-const addButton = document.getElementById("add-btn");
-addButton.addEventListener("click", () => {
-  console.log("LOPG");
-});
-
 // render current state of task list
 const renderTaskList = () => {
   // render good list
@@ -46,7 +40,7 @@ const renderTaskList = () => {
     goodTrList += tr;
   }
 
-  console.log("GOOD TR LIST", goodTrList);
+  // console.log("GOOD TR LIST", goodTrList);
 
   goodListTableElement.innerHTML = goodTrList;
 
@@ -99,27 +93,6 @@ const renderTaskList = () => {
 };
 
 renderTaskList();
-
-// get data from not to do list api
-const fetchTasksFromAPI = async () => {
-  // call api
-  // taskList = tasks from api
-  console.log("FETCH DATA FROM API");
-
-  // call api get th resposne
-  let response = await fetch("http://localhost:3000/api/v1/tasks");
-  // convert response to json data
-  let data = await response.json();
-
-  console.log("RESPONSE FROM API", data);
-
-  if (data.status === "success") {
-    taskList = data.tasks;
-    renderTaskList();
-  }
-};
-
-fetchTasksFromAPI();
 
 // random id generator
 const randomIdGenerator = (inputLen = 6) => {
@@ -184,12 +157,18 @@ const addTask = () => {
     const totalHours = taskList.reduce((acc, item) => acc + item.hour, 0);
 
     if (totalHours + taskObject.hour <= MAX_WEEKLY_HOUR) {
-      taskList.push(taskObject);
+      // call create task api
 
-      // analyse our task
-      analyzeTask();
-      updateLocalStorage();
-      renderTaskList();
+      if (createTask(taskObject)) {
+        taskList.push(taskObject);
+        // analyse our task
+        analyzeTask();
+        // update local storage
+        updateLocalStorage();
+        renderTaskList();
+      } else {
+        alert("TASK CREATION ERROR!");
+      }
     } else {
       alert("Max Weekly Hour Exceeded. Do not exert yourserlf.");
     }
@@ -201,16 +180,22 @@ const addTask = () => {
 // swap task
 const swapTask = (id) => {
   if (confirm("Do you want to Swap?")) {
-    let selectedTask = taskList.find((item) => item.id === id);
+    let selectedTaskToSwap = taskList.find((item) => item.id === id);
 
-    //   if(selectedTask.type == "good"){
-    //     selectedTask.type = "bad";
+    //   if(selectedTaskToSwap.type == "good"){
+    //     selectedTaskToSwap.type = "bad";
     //   }
     //   else{
-    //     selectedTask.type = "good";
+    //     selectedTaskToSwap.type = "good";
     //   }
 
-    selectedTask.type = selectedTask.type === "good" ? "bad" : "good";
+    selectedTaskToSwap.type =
+      selectedTaskToSwap.type === "good" ? "bad" : "good";
+
+    // call patch api
+    patchTask(id, {
+      type: selectedTaskToSwap.type,
+    });
 
     analyzeTask();
     updateLocalStorage();
@@ -263,7 +248,7 @@ const selectTask = (id) => {
   // fill input fields with previous value
   selectedTask = taskList.find((item) => item.id == id);
 
-  console.log(selectedTask);
+  // console.log(selectedTask);
 
   let taskElement = document.getElementById("task");
   let hourElement = document.getElementById("hour");
@@ -297,6 +282,8 @@ const updateTask = () => {
   // show the add button
   document.getElementById("add-btn").classList.remove("hidden");
 
+  // TODO: update api call
+
   // reset input fields
   taskElement.value = "";
   hourElement.value = "";
@@ -306,3 +293,70 @@ const updateTask = () => {
   updateLocalStorage();
   renderTaskList();
 };
+
+// fetch api
+// get data from not to do list api
+const fetchTasksFromAPI = async () => {
+  // call api
+  // taskList = tasks from api
+  console.log("FETCH DATA FROM API");
+
+  // call api get th resposne
+  let response = await fetch("http://localhost:3000/api/v1/tasks");
+
+  // fetch('url').then((response)=>{
+  //   // rest of the stuffs here
+  // })
+
+  // convert response to json data
+  let data = await response.json();
+
+  // console.log("RESPONSE FROM API", data);
+
+  if (data.status === "success") {
+    taskList = data.tasks;
+    renderTaskList();
+  }
+};
+
+// create task api
+const createTask = async (tObj) => {
+  // fetch api
+  // POST http://localhost:3000/api/v1/tasks
+  // payload : {id,task,hour,type}
+
+  let response = await fetch("http://localhost:3000/api/v1/tasks", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tObj),
+  });
+
+  let data = await response.json();
+
+  if (data.status == "success") {
+    return true;
+  } else return false;
+};
+
+// updat task api
+const patchTask = async (id, updatedObject) => {
+  let response = await fetch(`http://localhost:3000/api/v1/tasks/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedObject),
+  });
+
+  let data = await response.json();
+
+  if (data.status == "success") {
+    return true;
+  } else return false;
+};
+
+// TODO: delete task api call
+
+fetchTasksFromAPI();
